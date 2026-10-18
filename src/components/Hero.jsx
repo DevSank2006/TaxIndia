@@ -222,7 +222,7 @@ export default function Hero({isSubmitted,setIsSubmitted,showForm,setShowForm}) 
         
 
 
-        <div className="flex flex-wrap items-center  justify-center gap-2 sm:gap-2.5 lg:justify-start">
+        <div className="flex flex-wrap items-center  justify-center gap-2 sm:gap-2.5 lg:justify-start mt-15">
   {/* Orange badge */}
   <span className="inline-flex max-w-full items-center justify-center gap-1.5 rounded-2xl border border-orange-500/40 bg-orange-500/20 px-2.5 py-1.5 text-center text-[10px] font-bold leading-tight text-orange-300 sm:rounded-full sm:px-3 sm:text-xs">
     <Sparkles className="h-3 w-3 shrink-0 text-orange-400 sm:h-3.5 sm:w-3.5" />

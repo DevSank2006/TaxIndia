@@ -28,7 +28,7 @@ const reasons = [
 ];
 export default function WhyUs() {
   return (
-    <section className="section why-section" id="why-us">
+    <section className="section why-section " id="why-us">
       <div className="container">
         <SectionHeading
           eyebrow="INDIA'S MOST TRUSTED CA COMPANY"
