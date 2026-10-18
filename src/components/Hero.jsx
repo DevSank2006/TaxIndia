@@ -218,11 +218,23 @@ export default function Hero({isSubmitted,setIsSubmitted,showForm,setShowForm}) 
     <section className="hero-section">
       <div className="hero-grain" />
       <div className="container hero-layout">
-        <div className="hero-copy">
-          <div className="hero-tag">
-            <Sparkles size={14} /> OFFER ONLY FEW TIME &nbsp;{" "}
-            <span>◉ NO ADVANCE MONEY - FIRST WORK THEN PAYMENT</span>
-          </div>
+        <div className="hero-copy ">
+        
+
+
+        <div className="flex flex-wrap items-center  justify-center gap-2 sm:gap-2.5 lg:justify-start">
+  {/* Orange badge */}
+  <span className="inline-flex max-w-full items-center justify-center gap-1.5 rounded-2xl border border-orange-500/40 bg-orange-500/20 px-2.5 py-1.5 text-center text-[10px] font-bold leading-tight text-orange-300 sm:rounded-full sm:px-3 sm:text-xs">
+    <Sparkles className="h-3 w-3 shrink-0 text-orange-400 sm:h-3.5 sm:w-3.5" />
+    <span>OFFER ONLY FEW TIME</span>
+  </span>
+
+  {/* Green badge */}
+  <span className="inline-flex max-w-full items-center justify-center gap-1.5 rounded-2xl border border-emerald-500/40 bg-emerald-500/20 px-2.5 py-1.5 text-center text-[10px] font-bold leading-tight text-emerald-300 sm:rounded-full sm:px-3 sm:text-xs">
+    <ShieldCheck className="h-3 w-3 shrink-0 text-emerald-400 sm:h-3.5 sm:w-3.5" />
+    <span>NO ADVANCE MONEY - FIRST WORK THEN PAYMENT</span>
+  </span>
+</div>
           <h1>
             India's No.1 Online
             <br />

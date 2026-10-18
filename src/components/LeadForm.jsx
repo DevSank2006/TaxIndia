@@ -3,10 +3,12 @@ import { services } from "../data/services.js";
 import Thankyou from "./Thankyou.jsx"
 import { useState } from "react";
 import submitData from "./submitData.js"
+import { LoaderCircle } from "lucide-react";
 
 export default function LeadForm({compact=false,isSubmitted,setIsSubmitted }) {
    
    const[serviceData,setServiceData]=useState({})
+   const [isLoading, setIsLoading] = useState(false);
    const[supportPhone,setSupportPhone]=useState("917814006162")
 
     if (isSubmitted) {
@@ -18,6 +20,7 @@ export default function LeadForm({compact=false,isSubmitted,setIsSubmitted }) {
       className={`lead-form ${compact ? "lead-form-compact" : ""}`}
       onSubmit={async (e) => {
         e.preventDefault();
+        if(isLoading) return;
      const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
 
@@ -31,6 +34,8 @@ export default function LeadForm({compact=false,isSubmitted,setIsSubmitted }) {
        } 
 
       try {
+         
+          setIsLoading(true);
     await submitData(leadData);
 
     setServiceData(leadData);
@@ -38,6 +43,8 @@ export default function LeadForm({compact=false,isSubmitted,setIsSubmitted }) {
   } catch (error) {
     console.error("Google Sheets submission failed:", error);
     alert("Unable to submit your request. Please try again.");
+  }finally{
+     setIsLoading(false);
   };
       }}
     >
@@ -91,9 +98,23 @@ export default function LeadForm({compact=false,isSubmitted,setIsSubmitted }) {
   </select>
 </label>
 
-      <button type="submit" className="button button-primary form-submit">
-        SUBMIT &amp; CALL ME BACK <ArrowRight size={17} />
-      </button>
+     
+<button
+  type="submit"
+  className="button button-primary form-submit"
+  disabled={isLoading}
+>
+  {isLoading ? (
+    <>
+      <LoaderCircle size={17} className="animate-spin" />
+      SUBMITTING...
+    </>
+  ) : (
+    <>
+      SUBMIT &amp; CALL ME BACK <ArrowRight size={17} />
+    </>
+  )}
+</button>
       <div className="form-assurance">
         <LockKeyhole size={14} /> NO ADVANCE PAYMENT — First Work Then Payment
         &nbsp; · &nbsp; 🔒 100% Confidential &amp; Confidentiality Assured

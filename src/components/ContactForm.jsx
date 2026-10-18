@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { CheckCircle2, LockKeyhole } from "lucide-react";
+import { CheckCircle2, LockKeyhole,LoaderCircle } from "lucide-react";
+import submitLead from "./submitData.js";
 import { services } from "../data/services.js";
 import { states } from "../data/content.js";
 import { createLeadReference } from "../utils/leadReference.js";
@@ -7,6 +8,7 @@ import ServiceApplicationSuccess from "./ServiceApplicationSuccess.jsx";
 
 export default function ContactForm({ selectedService }) {
   const [lead, setLead] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [values, setValues] = useState({
     name: "",
     mobile: "",
@@ -24,15 +26,29 @@ export default function ContactForm({ selectedService }) {
       ...current,
       [event.target.name]: event.target.value,
     }));
-  const submit = (event) => {
-    event.preventDefault();
-    setLead({
-      ...values,
-      name: values.name.trim(),
-      mobile: values.mobile.trim(),
-      reference: createLeadReference(),
-    });
+  const submit = async (event) => {
+event.preventDefault();
+    setIsLoading(true)
+  const leadData = {
+    ...values,
+    name: values.name.trim(),
+    mobile: values.mobile.trim(),
+    reference: createLeadReference(),
   };
+    
+    
+    try {
+    await submitLead(leadData);
+
+    setLead(leadData);
+  } catch (error) {
+    console.error("Google Sheets submission failed:", error);
+    alert("Unable to submit your application. Please try again.");
+  } finally {
+    setIsLoading(false);
+  }
+  };
+   
 
   if (lead)
     return (
@@ -122,9 +138,22 @@ export default function ContactForm({ selectedService }) {
           />
         </label>
       </div>
-      <button type="submit" className="button button-lime contact-submit">
-        SUBMIT APPLICATION NOW <CheckCircle2 size={19} />
-      </button>
+     <button
+  type="submit"
+  className="button button-lime contact-submit"
+  disabled={isLoading}
+>
+  {isLoading ? (
+    <>
+      <LoaderCircle size={19} className="loading-spinner" />
+      SUBMITTING...
+    </>
+  ) : (
+    <>
+      SUBMIT APPLICATION NOW <CheckCircle2 size={19} />
+    </>
+  )}
+</button>
       <div className="contact-privacy">
         <LockKeyhole size={14} /> 100% Guaranteed Confidentiality · No Spam
         Policy · First Work Then Payment
