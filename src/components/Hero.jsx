@@ -42,12 +42,12 @@ const NAV_LINKS = [
 function Logo() {
   return (
     <a href="#" className="group flex items-center gap-2.5 sm:gap-3">
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-orange-500/30 bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 text-lg font-black text-white shadow-lg transition-transform group-hover:scale-105 sm:h-11 sm:w-11 sm:text-xl">
+      <div className=" flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-orange-500/30 bg-gradient-to-br from-blue-900 via-indigo-900 to-slate-900 text-lg font-black text-white shadow-lg transition-transform group-hover:scale-105 sm:h-11 sm:w-11 sm:text-xl ">
         <span className="text-orange-400">T</span>
         <span className="text-white">I</span>
       </div>
 
-      <div>
+      <div className="">
         <div className="flex items-center gap-1.5">
           <span className="font-sans text-xl font-extrabold tracking-tight text-blue-950 sm:text-2xl">
             TAX <span className="text-orange-500">INDIA</span>
@@ -84,7 +84,7 @@ function DesktopLinks() {
 // Buttons on the right side (tablet and desktop)
 function DesktopActions() {
   return (
-    <div className="hidden items-center gap-3 sm:flex">
+    <div className="hidden items-center gap-3 sm:flex ">
       <a
         href={callUrl}
         className="hidden items-center gap-2 rounded-xl border border-slate-200 bg-slate-100 px-4 py-2.5 text-xs font-bold text-slate-800 transition-all hover:bg-slate-200 lg:flex"
@@ -181,7 +181,7 @@ export default function Hero({isSubmitted,setIsSubmitted,showForm,setShowForm}) 
 
   return (
     <div>
-       <header className="sticky top-0 z-40 bg-white shadow-sm">
+       <header className="fixed lg:top-6 z-40 bg-white shadow-sm w-full">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-[68px] items-center justify-between sm:h-[72px]">
           <Logo />

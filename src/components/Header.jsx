@@ -41,10 +41,10 @@ function ContactLink({
 
 export default function TopBar() {
   return (
-    <div className="bg-slate-900 px-3 py-2 text-xs font-medium text-white sm:px-4">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-1.5 md:flex-row md:gap-2">
+    <div className="bg-slate-900 px-3 py-2 text-xs font-medium text-white sm:px-4 sticky top-0 z-50">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-1.5 md:flex-row md:gap-2 ">
         {/* Left: badge + message */}
-        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center md:justify-start md:text-left">
+        <div className="flex flex-wrap items-center justify-center gap-x-2 gap-y-1 text-center md:justify-start md:text-left ">
           <span className="animate-pulse rounded bg-orange-500 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white">
             No Advance Money
           </span>
