@@ -1,3 +1,4 @@
+
 {
   "name": "tax-india-react-site",
   "private": true,
@@ -5,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/build.mjs",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
