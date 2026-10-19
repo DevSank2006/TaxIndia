@@ -28,10 +28,10 @@ const business = [
 ];
 export default function Footer() {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer  ">
       <div className="footer-main">
-        <div className="container footer-grid">
-          <div className="footer-about">
+        <div className="container !mx-auto  !flex !w-full !px-4 !flex-wrap !items-start !gap-8 ">
+          <div className="footer-about ">
             <Logo light />
             <p>
               Thoughtful tax, compliance and business support to help you build
@@ -52,7 +52,7 @@ export default function Footer() {
               ✦ &nbsp; First work, then payment.
             </div>
           </div>
-          <div className="footer-column ">
+         <div className="flex  justify-start flex-wrap gap-y-4 gap-x-12  md:flex-1 lg:justify-evenly "> <div className="footer-column  flex flex-wrap">
             <h4>POPULAR SERVICES</h4>
             {popular.map((s, i) => (
               <a key={s} href="#services">
@@ -60,7 +60,7 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <div className="footer-column">
+          <div className="footer-column ">
             <h4>BUSINESS SUPPORT</h4>
             {business.map((s) => (
               <a key={s} href="#services">
@@ -69,8 +69,8 @@ export default function Footer() {
             ))}
             <a href="#banking">Banking & payments</a>
           </div>
-          <div className="footer-column footer-contact">
-            <h4>GET IN TOUCH</h4>
+          <div className="footer-column  footer-contact">
+            <h4 className="px-4">GET IN TOUCH</h4>
             <a href="tel:+917814006162">
               <Phone size={15} />
               +91 78140 06162
@@ -90,7 +90,7 @@ export default function Footer() {
             <a className="footer-contact-cta" href="#contact">
               Request a callback <ArrowUpRight size={15} />
             </a>
-          </div>
+          </div></div>
         </div>
       </div>
       <div className="footer-bottom">

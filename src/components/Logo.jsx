@@ -12,7 +12,7 @@ export default function Logo({ light = false }) {
       </span>
       <span className="brand-copy">
         <strong>
-          TAX <em>INDIA</em> <ShieldCheck size={15} />
+          TAX <em>INDIA</em>
         </strong>
         <small>INDIA'S NO.1 TAX &amp; BUSINESS COMPANY</small>
       </span>

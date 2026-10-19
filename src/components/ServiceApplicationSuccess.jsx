@@ -33,7 +33,9 @@ export default function ServiceApplicationSuccess({ lead, onClose }) {
       <a
         className="service-success-whatsapp"
         href={whatsappLink(
-          `Hello TAX INDIA, I want to apply for ${lead.service} (Offer Price ₹${lead.price}). Please share process and required documents`,
+          `Hello TAX INDIA, I have submitted an online application for ${lead.service}. ` +
+    `My Lead Reference ID is ${lead.reference}. Name: ${lead.name}, Phone: ${lead.mobile}. ` +
+    `Please initiate process.`,
         )}
         target="_blank"
         rel="noreferrer"

@@ -49,7 +49,7 @@ export default function TopBar() {
             No Advance Money
           </span>
 
-          <span className="text-[11px] text-slate-200 sm:text-xs">
+          <span  className="text-[11px]  text-slate-200 sm:text-xs">
             ⚡ First Work, Then Payment
             <span className="hidden sm:inline">
               {" "}
