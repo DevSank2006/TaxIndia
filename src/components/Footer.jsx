@@ -107,6 +107,25 @@ export default function Footer() {
             Independent tax and business services support platform.
           </span>
         </div>
+        
+          <div className="text-xs !w-full pb-2  !mx-auto  flex gap-x-1 pl-2 md:pl-6 lg:pl-12">
+
+
+            <div className="font-semibold pt-1 pl-6 text-[#a1a1a1]">This website is developed by</div>
+            <a
+  href="https://anantplus.com/"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="font-semibold pt-1 text-[#dbdbdd]"
+  
+>
+  Anantplus
+</a>
+          </div>
+           
+         
+           
+          
       </div>
     </footer>
   );

@@ -9,6 +9,10 @@ export default function Services({ onApply }) {
   const [active, setActive] = useState("All Services");
   const [query, setQuery] = useState("");
   const [dialog, setDialog] = useState(null);
+  const [showAll, setShowAll] = useState(false);
+  const [more, setMore] = useState(true);
+
+
   const visible = useMemo(
     () =>
       services.filter(
@@ -19,9 +23,12 @@ export default function Services({ onApply }) {
     [active, query],
   );
   const apply = (service) => {
+    console.log(service)
     onApply(service.name);
     setDialog({ service, mode: "apply" });
   };
+  const cards=showAll?services:services.slice(0,12);
+  console.log(cards)
   return (
     <section className="section services-section" id="services">
       <div className="container">
@@ -60,7 +67,7 @@ export default function Services({ onApply }) {
         </div>
         <div className=" grid grid-cols-4 gap-3 max-[1050px]:grid-cols-2 max-[640px]:grid-cols-1 ">
           {visible.length ? (
-            visible.map((service) => (
+            cards.map((service) => (
               <ServiceCard
                 key={service.name}
                 service={service}
@@ -73,6 +80,22 @@ export default function Services({ onApply }) {
               No matching services. Try a different search.
             </div>
           )}
+
+
+          {more ?<div
+  onClick={() => {
+    setShowAll(true);
+    setMore(false);
+  }
+    
+
+  }
+ className="flex w-15 cursor-pointer items-center justify-center gap-0.5 rounded-lg ml-1 h-6 bg-[linear-gradient(90deg,#ff7000,#ff9800)] text-sm font-semibold text-white transition hover:opacity-90"
+>
+  <span className="font-semibold">More</span> <ArrowRight size={16} />
+</div>:""}
+      
+
         </div>
         <div className="services-note">
           <span>Need help choosing?</span>
