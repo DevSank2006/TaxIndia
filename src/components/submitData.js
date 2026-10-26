@@ -1,6 +1,6 @@
 
 const GOOGLE_SHEETS_API_URL =
-  "https://script.google.com/macros/s/AKfycbwISZFC4NXLB-k9PrgwIGE2PAXJAFVnjfZwVwQhrtWL5W8TmNgIkxY1mBLDbKg6pjtg5Q/exec";
+  "https://script.google.com/macros/s/AKfycbzab8K6LZeFKwcYsuyqkQ3UMMzjKWC-0dM96u7P1s7mq_VUGoNs2tsaRTJXwgKr5F4JzA/exec";
 
 export default async function submitLead(formData) {
   const response = await fetch(GOOGLE_SHEETS_API_URL, {
@@ -11,11 +11,23 @@ export default async function submitLead(formData) {
     body: JSON.stringify(formData),
   });
 
-  const result = await response.json();
-  if (!response.ok || !result.success) {
-    throw new Error(`HTTP error: ${response.status}`);
+  const responseText = await response.text();
+  console.log("HTTP status:", response.status);
+  console.log("Apps Script raw response:", responseText);
+
+  let result;
+
+  try {
+    result = JSON.parse(responseText);
+  } catch {
+    throw new Error("Apps Script returned a non-JSON response.");
   }
-  console.log("Google Apps Script response:", result);
+
+  if (!response.ok || result.success !== true) {
+    throw new Error(
+      result.message || `Request failed: HTTP ${response.status}`
+    );
+  }
 
   return result;
 }
