@@ -101,7 +101,7 @@ event.preventDefault();
           <select name="service" value={values.service} onChange={change}>
             {services.map((service) => (
               <option key={service.name} value={service.name}>
-                {service.name} — ₹{service.price.toLocaleString("en-IN")}
+                {service.name} 
               </option>
             ))}
             <option>Savings Account Opening</option>

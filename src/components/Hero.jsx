@@ -82,7 +82,7 @@ function DesktopLinks() {
 }
 
 // Buttons on the right side (tablet and desktop)
-function DesktopActions() {
+function DesktopActions({ onGetStarted }) {
   return (
     <div className="hidden items-center gap-3 sm:flex ">
       <a
@@ -104,6 +104,8 @@ function DesktopActions() {
       </a>
 
       <button
+      onClick={onGetStarted}
+     
         type="button"
         className="flex items-center gap-1 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 px-4 py-2.5 text-xs font-bold text-white shadow-md transition-all hover:from-orange-600 hover:to-amber-700 hover:shadow-lg"
       >
@@ -115,7 +117,7 @@ function DesktopActions() {
 }
 
 // Dropdown menu shown on mobile and tablet
-function MobileMenu({ onClose }) {
+function MobileMenu({ onClose,onGetStarted  }) {
   return (
     <div className="border-t border-slate-100 bg-white shadow-lg lg:hidden">
       <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6">
@@ -154,7 +156,7 @@ function MobileMenu({ onClose }) {
 
           <button
             type="button"
-            onClick={onClose}
+            onClick={onGetStarted}
             className="col-span-2 flex items-center justify-center gap-1 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 px-3 py-3 text-xs font-bold text-white"
           >
             <span>Get Started</span>
@@ -188,7 +190,7 @@ export default function Hero({isSubmitted,setIsSubmitted,showForm,setShowForm}) 
 
           <DesktopLinks />
 
-          <DesktopActions />
+          <DesktopActions onGetStarted={() => setShowForm(true)}/>
 
           {/* Mobile + tablet: call icon (mobile only) and hamburger */}
           <div className="flex items-center gap-1 lg:hidden">
@@ -213,7 +215,11 @@ export default function Hero({isSubmitted,setIsSubmitted,showForm,setShowForm}) 
         </div>
       </div>
 
-      {menuOpen && <MobileMenu onClose={closeMenu} />}
+      {menuOpen && <MobileMenu  onClose={closeMenu}
+    onGetStarted={() => {
+      setMenuOpen(false);
+      setShowForm(true);
+    }} />}
     </header>
     <section className="hero-section">
       <div className="hero-grain" />

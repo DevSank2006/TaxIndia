@@ -1,7 +1,7 @@
 import { ArrowRight, LockKeyhole } from "lucide-react";
 import { services } from "../data/services.js";
 import Thankyou from "./Thankyou.jsx"
-import { useState } from "react";
+import { useState,useRef } from "react";
 import submitData from "./submitData.js"
 import { LoaderCircle } from "lucide-react";
 
@@ -10,6 +10,7 @@ export default function LeadForm({compact=false,isSubmitted,setIsSubmitted }) {
    const[serviceData,setServiceData]=useState({})
    const [isLoading, setIsLoading] = useState(false);
    const[supportPhone,setSupportPhone]=useState("917814006162")
+   const submittingRef = useRef(false);
 
     if (isSubmitted) {
     return <Thankyou data={serviceData} setIsSubmitted={setIsSubmitted}  supportPhone={supportPhone}/>
@@ -20,7 +21,8 @@ export default function LeadForm({compact=false,isSubmitted,setIsSubmitted }) {
       className={`lead-form ${compact ? "lead-form-compact" : ""}`}
       onSubmit={async (e) => {
         e.preventDefault();
-        if(isLoading) return;
+        if (submittingRef.current) return;
+         submittingRef.current = true; 
      const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
 
@@ -30,8 +32,9 @@ export default function LeadForm({compact=false,isSubmitted,setIsSubmitted }) {
         name:data.fullName,
         service:data.service,
         leadId:`TXI-${randomTxi}`,
-        phone:data.phone
-       } 
+        phone:data.phone,
+        spreadsheetId: "1bDkl2CKBzHsuEoS0q98hGYFVDHXzgdNLU8bJGzdD_MU"
+       }
 
       try {
          
@@ -44,6 +47,7 @@ export default function LeadForm({compact=false,isSubmitted,setIsSubmitted }) {
     console.error("Google Sheets submission failed:", error);
     alert("Unable to submit your request. Please try again.");
   }finally{
+    submittingRef.current = false;
      setIsLoading(false);
   };
       }}
@@ -91,9 +95,6 @@ export default function LeadForm({compact=false,isSubmitted,setIsSubmitted }) {
     ))}
     <option value="Savings / Current Account Opening">
       Savings / Current Account Opening
-    </option>
-    <option value="Business Loan / Mudra Loan">
-      Business Loan / Mudra Loan
     </option>
   </select>
 </label>

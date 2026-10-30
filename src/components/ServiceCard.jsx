@@ -40,10 +40,6 @@ export default function ServiceCard({ service, onDetails, onApply }) {
         <span className="service-icon">
           <Icon size={21} />
         </span>
-        <span className="service-price">
-          <b>₹ {service.price.toLocaleString("en-IN")}</b>
-          <del>₹{service.oldPrice.toLocaleString("en-IN")}</del>
-        </span>
       </div>
       <h3>{service.name}</h3>
       <p>{service.description}</p>

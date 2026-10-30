@@ -27,7 +27,7 @@ export default function Services({ onApply }) {
     onApply(service.name);
     setDialog({ service, mode: "apply" });
   };
-  const cards=showAll?services:services.slice(0,12);
+  const cards=showAll?services:services.slice(0,8);
   console.log(cards)
   return (
     <section className="section services-section" id="services">
@@ -92,7 +92,7 @@ export default function Services({ onApply }) {
   }
  className="flex w-15 cursor-pointer items-center justify-center gap-0.5 rounded-lg ml-1 h-6 bg-[linear-gradient(90deg,#ff7000,#ff9800)] text-sm font-semibold text-white transition hover:opacity-90"
 >
-  <span className="font-semibold">More</span> <ArrowRight size={16} />
+  <span className="font-semibold">Other</span> <ArrowRight size={16} />
 </div>:""}
       
 

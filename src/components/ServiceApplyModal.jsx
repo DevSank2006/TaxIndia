@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useRef } from "react";
 import { ArrowRight, ShieldCheck,LoaderCircle} from "lucide-react";
 import ServiceModalFrame from "./ServiceModalFrame.jsx";
 import ServiceApplicationSuccess from "./ServiceApplicationSuccess.jsx";
@@ -9,6 +9,7 @@ import { createLeadReference } from "../utils/leadReference.js";
 export default  function ServiceApplyModal({ service, onClose }) {
   const [lead, setLead] = useState(null);
   const [loading, setLoading] = useState(false);
+  const submittingRef = useRef(false);
 const [error, setError] = useState("");
   const [fields, setFields] = useState({
     name: "",
@@ -20,11 +21,12 @@ const [error, setError] = useState("");
       ...current,
       [event.target.name]: event.target.value,
     }));
-  const submit = async (event) => {
+ const submit = async (event) => {
   event.preventDefault();
 
-  if (loading) return;
+  if (submittingRef.current) return;
 
+  submittingRef.current = true;
   setLoading(true);
   setError("");
 
@@ -41,31 +43,32 @@ const [error, setError] = useState("");
       phone: fields.mobile.trim(),
       service: fields.service,
       price,
-       spreadsheetId: "1bDkl2CKBzHsuEoS0q98hGYFVDHXzgdNLU8bJGzdD_MU",
+      spreadsheetId: "1bDkl2CKBzHsuEoS0q98hGYFVDHXzgdNLU8bJGzdD_MU",
       leadId: reference,
     };
 
-    // Wait until Google Apps Script responds.
     const result = await submitData(leadData);
 
-    // Assumes submitData returns the parsed JSON response.
     if (!result.success) {
       throw new Error(result.message || "Submission failed.");
     }
 
     setLead({
-      ...fields,
-      name: fields.name.trim(),
-      mobile: fields.mobile.trim(),
-      price,
-      reference,
-    });
+  ...fields,
+  name: fields.name.trim(),
+  mobile: fields.mobile.trim(),
+  price,
+  leadId: reference,
+});
+
   } catch (error) {
     console.error("Lead submission failed:", error);
     setError(
       error.message || "Unable to submit your request. Please try again."
     );
+
   } finally {
+    submittingRef.current = false;
     setLoading(false);
   }
 };
@@ -122,15 +125,13 @@ const [error, setError] = useState("");
               <select name="service" value={fields.service} onChange={change}>
                 {services.map((item) => (
                   <option key={item.name} value={item.name}>
-                    {item.name} (₹{item.price.toLocaleString("en-IN")})
+                    {item.name} 
                   </option>
                 ))}
                 <option value="Savings / Current Account Opening">
                   Savings / Current Account Opening
                 </option>
-                <option value="Business Loan / Mudra Loan">
-                  Business Loan / Mudra Loan
-                </option>
+                
               </select>
             </label>
            

@@ -1,8 +1,13 @@
 import { Check, MessageCircle, Phone, ShieldCheck } from "lucide-react";
 import { whatsappLink } from "../utils/whatsapp.js";
+import submitData from "./submitData.js"
+import {useEffect} from "react"
 
 export default function ServiceApplicationSuccess({ lead, onClose }) {
-  const ref = lead.reference;
+    
+
+
+
   return (
     <div className="service-success-view">
       <span className="service-success-icon">
@@ -19,7 +24,7 @@ export default function ServiceApplicationSuccess({ lead, onClose }) {
       <dl className="service-lead-reference">
         <div>
           <dt>Lead Reference ID:</dt>
-          <dd>{ref}</dd>
+          <dd>{lead.leadId}</dd>
         </div>
         <div>
           <dt>Selected Service:</dt>
@@ -40,7 +45,7 @@ export default function ServiceApplicationSuccess({ lead, onClose }) {
         target="_blank"
         rel="noreferrer"
       >
-        <MessageCircle size={18} /> CHAT ON WHATSAPP NOW ({ref})
+        <MessageCircle size={18} /> CHAT ON WHATSAPP NOW ({lead.leadId})
       </a>
       <a className="service-success-call" href="tel:+917814006162">
         <Phone size={17} /> Call Senior CA (+91 7814006162)

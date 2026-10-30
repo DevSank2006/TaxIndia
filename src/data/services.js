@@ -2,8 +2,8 @@ export const services = [
   {
     name: "GST Registration",
     category: "Tax & GST",
-    price: 399,
-    oldPrice: 999,
+    
+    
     label: "MUST HAVE FOR BUSINESS",
     description:
       "Get your 15-digit GSTIN number fast with guaranteed approval.",
@@ -13,8 +13,8 @@ export const services = [
   {
     name: "GST Return Filing",
     category: "Tax & GST",
-    price: 199,
-    oldPrice: 499,
+    
+    
     label: "MONTHLY / QUARTERLY",
     description:
       "Monthly GSTR-1, GSTR-3B & Annual Return filing without penalty.",
@@ -24,8 +24,8 @@ export const services = [
   {
     name: "ITR Filing",
     category: "Tax & GST",
-    price: 299,
-    oldPrice: 999,
+    
+    
     label: "MAX TDS REFUND",
     description:
       "File Income Tax Return for Salaried, Business, Traders & Capital Gains.",
@@ -35,8 +35,8 @@ export const services = [
   {
     name: "MSME (Udyam) Registration",
     category: "Company & Startups",
-    price: 299,
-    oldPrice: 799,
+    
+    
     label: "GOVT SCHEME BENEFITS",
     description:
       "Get Udyam Certificate for Govt Subsidies, Collateral Free Loans.",
@@ -46,8 +46,8 @@ export const services = [
   {
     name: "Food License (FSSAI)",
     category: "Licenses & TM",
-    price: 399,
-    oldPrice: 999,
+    
+    
     label: "MANDATORY FOR FOOD BIZ",
     description:
       "Basic, State & Central FSSAI License for Restaurants, Cafes & Food Shops.",
@@ -57,8 +57,8 @@ export const services = [
   {
     name: "PAN Card",
     category: "Tax & GST",
-    price: 399,
-    oldPrice: 799,
+    
+    
     description:
       "New PAN Card or Correction for Individual, Firm, Company & Trust.",
     time: "Same Day e-PAN",
@@ -67,8 +67,8 @@ export const services = [
   {
     name: "Trademark Registration",
     category: "Licenses & TM",
-    price: 1499,
-    oldPrice: 3999,
+    
+    
     label: "PROTECT YOUR BRAND",
     description: "Protect your Brand Name, Logo, & Tagline with ® Symbol.",
     time: "24 Hours (Use TM Symbol)",
@@ -77,8 +77,8 @@ export const services = [
   {
     name: "DSC (Digital Signature Certificate)",
     category: "Licenses & TM",
-    price: 1999,
-    oldPrice: 3499,
+    
+    
     label: "CLASS 3 HIGH SECURITY",
     description:
       "Class 3 Digital Signature Token with 2 Years validity for Tenders & MCA.",
@@ -88,8 +88,8 @@ export const services = [
   {
     name: "PF & ESI Registration",
     category: "Company & Startups",
-    price: 899,
-    oldPrice: 2499,
+    
+    
     description: "Provident Fund (EPFO) & ESI code allotment for employers.",
     time: "2 to 3 Days",
     icon: "users",
@@ -97,8 +97,8 @@ export const services = [
   {
     name: "Startup India Registration",
     category: "Company & Startups",
-    price: 2899,
-    oldPrice: 5999,
+    
+    
     label: "100% TAX EXEMPTION",
     description:
       "DPIIT Recognition for 3-Year Income Tax Exemption & Govt Seed Funds.",
@@ -108,8 +108,8 @@ export const services = [
   {
     name: "Pvt Ltd Company Registration",
     category: "Company & Startups",
-    price: 6999,
-    oldPrice: 12999,
+    
+    
     label: "MOST POPULAR FOR STARTUPS",
     description:
       "Complete Incorporation with Name Approval, 2 DSCs, DIN, PAN, TAN & Bank A/c.",
@@ -119,24 +119,14 @@ export const services = [
   {
     name: "Import Export Code (IEC)",
     category: "Licenses & TM",
-    price: 399,
-    oldPrice: 1499,
+    
+    
     label: "LIFETIME VALIDITY",
     description:
       "DGFT 10-digit IEC code to import or export goods/services globally.",
     time: "24 Hours",
     icon: "globe",
-  },
-  {
-    name: "Mudra Loan Apply",
-    category: "Loans & Banking",
-    price: 899,
-    oldPrice: 2499,
-    label: "UP TO ₹10 LAKH LOAN",
-    description: "Shishu, Kishor & Tarun PMMY Loan Application assistance.",
-    time: "24 Hours Document Ready",
-    icon: "indian-rupee",
-  },
+  }
 ];
 
 export const categories = [
